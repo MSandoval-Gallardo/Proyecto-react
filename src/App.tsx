@@ -1,18 +1,19 @@
 // import Card from "./components/card";
 
 import LoginButton from "./components/login-button";
+import LogoutButton from "./components/logout-button";
 import { useAuth } from "./hooks/use-auth";
 
 const App = () => {
 
-  const {user} = useAuth()
+  // const {user} = useAuth()
+  const {user} = useAuth();
 
   if(!user){
     return(
     <div className="container">
       <h1>tienes que logearte</h1>
-      <LoginButton>
-      </LoginButton>
+      <LoginButton/>
     </div>
     )
   }
@@ -22,6 +23,7 @@ const App = () => {
     <div className="container">
       <h1>Bienvenido, {user.name}
         <p>Correo usuario: {user.email}</p>
+        <LogoutButton/>
       </h1>
     </div>
     // <div className="container">

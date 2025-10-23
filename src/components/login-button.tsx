@@ -1,7 +1,9 @@
 import { useAuth } from "../hooks/use-auth";
 
+
 const LoginButton = () => {
-    const {login, user} = useAuth()
+    // const {login, user} = useAuth()
+    const {user, login} = useAuth();
   return (
     <button 
     className="btn btn-primary"

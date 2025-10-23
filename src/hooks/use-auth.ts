@@ -1,33 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth/auth-context";
 
-export interface User{
-    name: string;
-    email: string;
-}
-
+//3. exportar el hook para usar el contexto
 export const useAuth = () => {
-
-    const [user, setUser] = useState<User | null>(null);
-
-    const login = () => {
-
-        setUser({
-            name: "nom-usuario",
-            email: "test@correo.cl"
-
-        })
+    const context = useContext(AuthContext);
+    if(!context){
+        throw new Error("useAuth debe usarse dentro de un proveedor de autenticación ")
     }
-
-    const logout = () => {
-        setUser(null);
-    }
-
-    return {
-        user,
-        login,
-        logout,
-    }
-
-
-
+    return context;
 }
